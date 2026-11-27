@@ -10,7 +10,7 @@ async function loadRegistry() {
 
   // TODO 3: Create a DOMParser and parse xmlText as "application/xml".
   const parser = new DOMParser();
-  const xmlDocument = parser.parseFromString(xmlText, "application/xml");
+  xmlDocument = parser.parseFromString(xmlText, "application/xml");
   
 
   // TODO 4: Find the parsererror element. Show its text and stop if it exists.
@@ -39,8 +39,8 @@ function renderPatients() {
     //The logic means: If the filter is all, do not skip anyone. If the filter is critical, skip stable patients.
     //If the filter is stable, skip critical patients.
     //he return skips only the current patient in the forEach() loop.
-    if (selectedFilter !== "all" && status !== selectedFilter) {
-      continue;
+    if (filter.value !== "all" && status !== filter.value) {
+      return;
     }
 
     const card = document.createElement("article");
